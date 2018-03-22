@@ -8,7 +8,6 @@ function validate(){
     }
 }
 function onEmailSubmit(token){
-    // TODO: Iterate through form to grab inputs?
     var fromEmail = document.getElementById('email-input').value;
     var fromName = document.getElementById('name-input').value;
     var subject = document.getElementById('subject-input').value;
@@ -22,8 +21,7 @@ function onEmailSubmit(token){
     };
     console.log(payload);
     var http = new XMLHttpRequest();
-    // http.open("POST", "https://api.dynamicgravitysystems.com/sendmail", true);
-    http.open("POST", "http://localhost:8080/sendmail", true);
+    http.open("POST", "https://api.dynamicgravitysystems.com/sendmail", true);
     http.onload = function () {
         M.toast({html: "Your message was sent!", displayLength: 4000});
         M.Modal.getInstance(document.querySelector('.modal')).close();

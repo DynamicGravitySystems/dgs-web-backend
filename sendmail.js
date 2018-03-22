@@ -1,13 +1,12 @@
 const router = require('express').Router();
-const cors = require('cors');
 const captcha = require('./models/captcha');
 const email = require('./models/email');
 
 const env = require('./env');
 
-router.post('/', cors({origin: env.API_CORS_ORIGIN}), async function(request, response){
+router.post('/', async function(request, response){
 
-    let message = `${request.body['from']}/${request.body['name']}\n\nMessage: ${request.body['message']}\n\nSent via DgS Web Form.`;
+    let message = `Message from: ${request.body['from']} / ${request.body['name']}\n\nMessage: ${request.body['message']}\n\nSent via DgS Web Form.`;
 
     captcha.verify(request.body['captcha']).then(() => {
         return email.sendMessage(env.AWS_SES_RECVR, env.AWS_SES_SENDER, request.body['subject'], message);

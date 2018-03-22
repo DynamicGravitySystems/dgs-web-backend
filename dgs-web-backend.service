@@ -1,0 +1,12 @@
+[Unit]
+Description=DgS Website Backend (NodeJS) systemd runner
+
+[Service]
+Type=simple
+User=node
+ExecStart=/usr/bin/node /opt/dgs-web-backend/app.js
+Restart=always
+EnvironmentFile=/home/nodejs/environment-backend.js
+
+[Install]
+WantedBy=multi-user.target
