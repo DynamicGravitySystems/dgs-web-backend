@@ -1,5 +1,5 @@
 {
-  "name": "dgs-web-backend",
+  "name": "dgsapi",
   "version": "1.0.0",
   "description": "Backend Services for DgS Public Website",
   "main": "app.js",
@@ -17,11 +17,14 @@
   },
   "homepage": "https://github.com/DynamicGravitySystems/dgs-web-backend#readme",
   "dependencies": {
-    "aws-sdk": "^2.211.1",
+    "aws-sdk": "^2.238.1",
     "cors": "^2.8.4",
+    "debug": "^3.1.0",
     "express": "^4.16.3",
-    "nodemailer": "^4.6.3",
     "npm": "^5.7.1",
     "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.1"
   }
 }
