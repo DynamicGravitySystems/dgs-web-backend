@@ -1,10 +1,16 @@
 const router = require('express').Router();
 const captcha = require('./models/captcha');
+const cors = require('cors');
 const email = require('./models/email');
 
 const env = require('./env');
 
-router.post('/', async function(request, response){
+const corsOpts = {
+    origin: env.API_CORS_ORIGIN,
+    optionsSuccessStatus: 200
+};
+
+router.post('/', cors(corsOpts), async function(request, response){
 
     let message = `Message from: ${request.body['from']} / ${request.body['name']}\n\nMessage: ${request.body['message']}\n\nSent via DgS Web Form.`;
 
