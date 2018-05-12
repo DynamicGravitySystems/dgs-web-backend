@@ -23,11 +23,11 @@ router.post('/', cors(corsOpts), async function(request, response){
     captcha.verify(request.body['captcha']).then(() => {
         return sns.publish(env.AWS_SNS_TOPIC, subject, message);
     }).then((info) => {
-        debug(info);
-        return response.status(200).send({success: true, message: info});
+        debug("SNS Publish successful: " + info);
+        return response.status(200).send({success: true, message: "Message sent successfully"});
     }).catch((err) => {
-        debug(err);
-        return response.status(500).send({success: false, message: err});
+        debug("SNS Publish failed: " + err);
+        return response.status(500).send({success: false, message: "Message failed to send."});
     })
 });
 
