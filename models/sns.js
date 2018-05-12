@@ -1,7 +1,7 @@
 const debug = require('debug')('dgsapi:sns');
 const AWS = require('aws-sdk');
-const sns = new AWS.SNS();
-
+const env = require('../env');
+const sns = new AWS.SNS({apiVersion: '2010-03-31', region: env.AWS_SNS_REGION});
 
 exports.publish = function(arn, subject, message) {
   const params = {
